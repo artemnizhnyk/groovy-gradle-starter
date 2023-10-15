@@ -1,0 +1,28 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+group = 'com.artemnizhnyk'
+version = '1.0-SNAPSHOT'
+
+
+
+tasks.withType(JavaExec).configureEach {
+    standardInput = System.in
+    systemProperty 'file.encoding', 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.groovy:groovy:4.0.14'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
